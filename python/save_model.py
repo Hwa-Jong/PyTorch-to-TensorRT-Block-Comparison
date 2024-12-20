@@ -26,7 +26,6 @@ def export_to_onnx(opt):
     model = BaseModle(
         block_type, channels, num_blocks, norm_type, act_type, num_classes
     )
-
     mmac, params = get_model_complexity_info(
         model,
         (3, input_size, input_size),
@@ -36,8 +35,19 @@ def export_to_onnx(opt):
 
     model.eval()
 
+    input_names = ["input_1"]
+    output_names = ["output_1"]
     dummy_input = torch.randn(1, 3, input_size, input_size)
-    torch.onnx.export(model, dummy_input, save_path, verbose=True)
+
+    torch.onnx.export(
+        model,
+        dummy_input,
+        save_path,
+        input_names=input_names,
+        output_names=output_names,
+        export_params=True,
+        verbose=True,
+    )
 
     opt.params = params
     opt.mmac = mmac
