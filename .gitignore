@@ -197,3 +197,23 @@ cython_debug/
 *.exe
 *.out
 *.app
+
+# Visual Studio files and folders
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.ipch/
+*.log
+*.tlog/
+*.idb
+*.pdb
+*.obj
+*.pch
+*.exe
+*.ilk
+*.aps
+*.ncb
+*.sdf
+*.opendb
+*.tlog/
