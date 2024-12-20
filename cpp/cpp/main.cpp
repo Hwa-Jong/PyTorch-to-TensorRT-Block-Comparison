@@ -73,16 +73,40 @@ bool run_inference(const char* model_path, int height, int width, int channel, i
 
 int main() {
 
-	const char* model_path = "C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.onnx";
 	const int height = 256;
 	const int width = 256;
 	const int channel = 3;
 	const int repeat = 1000;
+
+	/*const char* model_path = "C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.onnx";
 	bool fp16mode = true;
 
 	if (!run_inference(model_path, height, width, channel, repeat, fp16mode)) {
 		std::cerr << "Error occurred during inference.\n";
 		return -1;
+	}*/
+
+	std::vector<const char*> model_paths = {
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp2.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp3.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp4.onnx",
+	};
+
+	for (const auto& model_path : model_paths) {
+		for (bool fp16mode : {false, true}) {
+			std::cout << "Running inference for model: " << model_path
+				<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
+
+			if (!run_inference(model_path, height, width, channel, repeat, fp16mode)) {
+				std::cerr << "Error occurred during inference for model: " << model_path
+					<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
+			}
+			else {
+				std::cout << "Inference completed for model: " << model_path
+					<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
+			}
+		}
 	}
 
 	std::cout << "Test Success!" << std::endl;
