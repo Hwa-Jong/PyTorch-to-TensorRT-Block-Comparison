@@ -6,27 +6,20 @@
 
 using namespace std;
 
-int main() {
+bool run_inference(const char* model_path, int height, int width, int channel, int repeat, bool fp16mode) {
 
 	std::vector<float> output;
 	std::vector<float> img;
 
-	int height = 256;
-	int width = 256;
-	int channel = 3;
-
 	bool success;
-	int repeat = 1000;
 
 	float  inference_time = 0.0;
 	cudaEvent_t inference_start, inference_finish;
 	cudaEventCreate(&inference_start);
 	cudaEventCreate(&inference_finish);
 
-	const char* model_path = "C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.json.onnx";
-
 	ModelTrt model = ModelTrt();
-	model.load_model(model_path, true);
+	model.load_model(model_path, true, fp16mode);
 	model.mallocData();
 
 	img.resize(height*width*channel);
@@ -54,8 +47,9 @@ int main() {
 	std::filesystem::path full_path(model_path_str); // 경로를 std::filesystem::path로 변환
 
 	// 경로를 유지한 채 파일 이름 변경
+	std::string precision_suffix = fp16mode ? "_fp16" : "_fp32"; // fp16 or fp32 suffix 결정
 	std::filesystem::path parent_dir = full_path.parent_path(); // 부모 디렉토리 경로
-	std::string file_name = full_path.stem().string() + "_inference.txt"; // 새로운 파일 이름
+	std::string file_name = full_path.stem().string() + "_inference" + precision_suffix + ".txt"; // 최종 파일 이름 생성
 	std::filesystem::path output_file = parent_dir / file_name; // 새로운 파일 경로 생성
 
 	// 결과 저장
@@ -73,6 +67,25 @@ int main() {
 
 	cudaEventDestroy(inference_start);
 	cudaEventDestroy(inference_finish);
+
+	return true;
+}
+
+int main() {
+
+	const char* model_path = "C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.onnx";
+	const int height = 256;
+	const int width = 256;
+	const int channel = 3;
+	const int repeat = 1000;
+	bool fp16mode = true;
+
+	if (!run_inference(model_path, height, width, channel, repeat, fp16mode)) {
+		std::cerr << "Error occurred during inference.\n";
+		return -1;
+	}
+
+	std::cout << "Test Success!" << std::endl;
 
 	return 0;
 }

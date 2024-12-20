@@ -112,7 +112,7 @@ long ModelTrt::get_model_channel() {
     }
 }
 
-void ModelTrt::load_onnx_model(const char* model_path) {
+void ModelTrt::load_onnx_model(const char* model_path, bool fp16mode) {
     builder = createInferBuilder(logger);
     flag = 1U << static_cast<uint32_t>(NetworkDefinitionCreationFlag::kEXPLICIT_BATCH);
     network = builder->createNetworkV2(flag);
@@ -124,10 +124,12 @@ void ModelTrt::load_onnx_model(const char* model_path) {
     }
     config = builder->createBuilderConfig();
     config->setMaxWorkspaceSize(1U << 30);
-    if (builder->platformHasFastFp16())
-    {
-        std::cout << "fp16 mode" << std::endl;
-        config->setFlag(nvinfer1::BuilderFlag::kFP16);
+    if (fp16mode){
+        if (builder->platformHasFastFp16())
+        {
+            std::cout << "fp16 mode" << std::endl;
+            config->setFlag(nvinfer1::BuilderFlag::kFP16);
+        }
     }
     serializedModel = builder->buildSerializedNetwork(*network, *config);
     runtime = createInferRuntime(logger);
@@ -196,11 +198,11 @@ bool ModelTrt::inference(std::vector<float> input, std::vector<float>* output) {
     return true;
 }
 
-void ModelTrt::load_model(const char* load_path, bool save_trt) {
+void ModelTrt::load_model(const char* load_path, bool save_trt, bool fp16mode) {
     std::string name = load_path;
 
     if (name.substr(name.find_last_of(".") + 1) == "onnx") {
-        load_onnx_model(load_path);
+        load_onnx_model(load_path, fp16mode);
         if (save_trt) {
             name.replace(name.length() - 4, 4, "trt");
             save_trt_model(name.data());

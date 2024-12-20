@@ -44,12 +44,12 @@ public:
     long get_model_sizeY();
     long get_model_channel();
 
-    void load_onnx_model(const char* model_path);
+    void load_onnx_model(const char* model_path, bool fp16mode);
     void mallocData();
     bool inference(std::vector<float> input, std::vector<float>* output);
     void save_trt_model(const char* save_path);
     void load_trt_model(const char* load_path);
-    void load_model(const char* load_path, bool save_trt = true);
+    void load_model(const char* load_path, bool save_trt = true, bool fp16mode = true);
 };
 
 #endif
