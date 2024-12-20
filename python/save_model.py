@@ -21,7 +21,7 @@ def export_to_onnx(opt):
     num_classes = opt.num_classes
     input_size = opt.input_size
 
-    save_path = os.path.join("onnx", f"{name}.onnx")
+    save_path = os.path.join("onnx", f"{os.path.splitext(name)[0]}.onnx")
 
     model = BaseModle(
         block_type, channels, num_blocks, norm_type, act_type, num_classes
