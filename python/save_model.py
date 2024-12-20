@@ -12,7 +12,7 @@ def export_to_onnx(opt):
     if not os.path.exists("onnx"):
         os.makedirs("onnx")
 
-    name = opt.name
+    name = os.path.splitext(opt.name)[0]
     block_type = opt.block_type
     channels = opt.channels
     num_blocks = opt.num_blocks
@@ -21,7 +21,7 @@ def export_to_onnx(opt):
     num_classes = opt.num_classes
     input_size = opt.input_size
 
-    save_path = os.path.join("onnx", f"{os.path.splitext(name)[0]}.onnx")
+    save_path = os.path.join("onnx", f"{name}.onnx")
 
     model = BaseModle(
         block_type, channels, num_blocks, norm_type, act_type, num_classes
