@@ -65,7 +65,7 @@ def load_opt_from_json(json_path):
 
 
 if __name__ == "__main__":
-    path = os.path.join("python", "opts", "same_Params")
+    path = os.path.join("python", "opts")
     names = os.listdir(path)
     for name in names:
         opt = load_opt_from_json(os.path.join(path, name))
