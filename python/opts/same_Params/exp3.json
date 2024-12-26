@@ -1,9 +1,0 @@
-{
-    "block_type": "mobilenet",
-    "channels": [196, 392, 784, 1568, 3037],
-    "num_blocks": 8,
-    "norm_type": "bn",
-    "act_type": "relu",
-    "num_classes": 10,
-    "input_size": 256
-}

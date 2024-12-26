@@ -1,9 +1,0 @@
-{
-    "block_type": "base",
-    "channels": [64, 128, 256, 512, 1024],
-    "num_blocks": 4,
-    "norm_type": "bn",
-    "act_type": "relu",
-    "num_classes": 10,
-    "input_size": 256
-}

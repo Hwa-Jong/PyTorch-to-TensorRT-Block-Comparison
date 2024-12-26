@@ -1,9 +1,0 @@
-{
-    "block_type": "convnext",
-    "channels": [64, 128, 256, 512, 1109],
-    "num_blocks": 8,
-    "norm_type": "ln",
-    "act_type": "gelu",
-    "num_classes": 10,
-    "input_size": 256
-}
