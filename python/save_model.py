@@ -52,7 +52,7 @@ def export_to_onnx(opt):
     opt.params = params
     opt.mmac = mmac
 
-    opt_save_path = os.path.join("onnx", f"{name}_opt.json")
+    opt_save_path = os.path.join("onnx", f"{name}.json")
     with open(opt_save_path, "w") as f:
         json.dump(vars(opt), f, indent=4)
     print(f"Options saved to {opt_save_path}")
