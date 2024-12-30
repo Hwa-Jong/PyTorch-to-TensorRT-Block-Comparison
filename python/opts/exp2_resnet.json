@@ -4,6 +4,5 @@
     "num_blocks": 4,
     "norm_type": "ln",
     "act_type": "relu",
-    "num_classes": 10,
-    "input_size": 256
+    "num_classes": 10
 }

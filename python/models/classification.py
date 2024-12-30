@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from .blocks import BaseBlock, ResNetBlock, MobileNetBlock, ConvNeXtBlock
+from .blocks import VGGBlock, ResNetBlock, MobileNetBlock, ConvNeXtBlock
 
 
 class BaseModle(torch.nn.Module):
@@ -15,8 +15,8 @@ class BaseModle(torch.nn.Module):
     ):
         super().__init__()
 
-        if block_type == "base":
-            self.block = BaseBlock
+        if block_type == "vgg":
+            self.block = VGGBlock
         elif block_type == "resnet":
             self.block = ResNetBlock
         elif block_type == "mobilenet":

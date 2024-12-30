@@ -4,6 +4,5 @@
     "num_blocks": 4,
     "norm_type": "bn",
     "act_type": "gelu",
-    "num_classes": 10,
-    "input_size": 256
+    "num_classes": 10
 }

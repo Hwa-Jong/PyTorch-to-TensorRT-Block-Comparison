@@ -55,7 +55,7 @@ def get_act(act):
         raise ValueError(f"Unsupported activation type: {act}")
 
 
-class BaseBlock(nn.Module):
+class VGGBlock(nn.Module):
     def __init__(self, in_channels, out_channels, norm, act):
         super().__init__()
         self.conv1 = nn.Conv2d(
@@ -139,7 +139,6 @@ class ConvNeXtBlock(nn.Module):
         self.pointwise1 = nn.Linear(in_channels, 4 * in_channels)
         self.act = get_act(act)
         self.pointwise2 = nn.Linear(4 * in_channels, out_channels)
-        self.drop_path = nn.Identity()
 
         if in_channels != out_channels:
             self.shortcut = nn.Conv2d(
@@ -157,5 +156,5 @@ class ConvNeXtBlock(nn.Module):
         x = self.act(x)
         x = self.pointwise2(x)
         x = x.permute(0, 3, 1, 2)
-        x = self.drop_path(x) + shortcut
+        x = x + shortcut
         return x

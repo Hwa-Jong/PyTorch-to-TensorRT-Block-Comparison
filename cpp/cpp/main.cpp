@@ -77,35 +77,39 @@ int main() {
 	const int width = 256;
 	const int channel = 3;
 	const int repeat = 1000;
+	const bool fp16mode = false;
 
-	/*const char* model_path = "C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.onnx";
-	bool fp16mode = true;
-
-	if (!run_inference(model_path, height, width, channel, repeat, fp16mode)) {
-		std::cerr << "Error occurred during inference.\n";
-		return -1;
-	}*/
 
 	std::vector<const char*> model_paths = {
-		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1.onnx",
-		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp2.onnx",
-		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp3.onnx",
-		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp4.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1_vgg.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1_resnet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1_mobilenet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp1_convnext.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp2_vgg.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp2_resnet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp2_mobilenet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp2_convnext.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp3_vgg.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp3_resnet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp3_mobilenet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp3_convnext.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp4_vgg.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp4_resnet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp4_mobilenet.onnx",
+		"C:\\Users\\IntekPlus\\Desktop\\vscode\\PyTorch-to-TensorRT-Block-Comparison\\onnx\\exp4_convnext.onnx",
 	};
 
 	for (const auto& model_path : model_paths) {
-		for (bool fp16mode : {false, true}) {
-			std::cout << "Running inference for model: " << model_path
-				<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
+		std::cout << "Running inference for model: " << model_path
+			<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
 
-			if (!run_inference(model_path, height, width, channel, repeat, fp16mode)) {
-				std::cerr << "Error occurred during inference for model: " << model_path
-					<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
-			}
-			else {
-				std::cout << "Inference completed for model: " << model_path
-					<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
-			}
+		if (!run_inference(model_path, height, width, channel, repeat, fp16mode)) {
+			std::cerr << "Error occurred during inference for model: " << model_path
+				<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
+		}
+		else {
+			std::cout << "Inference completed for model: " << model_path
+				<< " with precision: " << (fp16mode ? "FP16" : "FP32") << "\n";
 		}
 	}
 
