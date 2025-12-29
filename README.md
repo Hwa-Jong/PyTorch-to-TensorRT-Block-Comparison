@@ -43,12 +43,12 @@ This repository contains the implementation and results based on the research pa
    - Add `C:\TensorRT-8.5.3.1\lib\` to your system PATH
 
 3. Configure ONNX directory path:
-   - Open `cpp/cpp/main.cpp`
+   - Open `main.cpp`
    - Update the `onnx_dir` variable with the path to your ONNX directory (generated in step 1)
    - Example: `std::filesystem::path onnx_dir = "C:\\Your\\Path\\To\\onnx";`
 
 4. Run the C++ inference:
-   - Open the Visual Studio solution in `cpp/cpp.sln`
+   - Open the Visual Studio solution in `cpp.sln`
    - Build and run `main.cpp`
 
 ## Key Content
