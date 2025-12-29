@@ -1,0 +1,19 @@
+{
+    "block_type": "vgg",
+    "channels": [
+        64,
+        128,
+        256,
+        512,
+        1024
+    ],
+    "num_blocks": 4,
+    "norm_type": "ln",
+    "act_type": "gelu",
+    "num_classes": 10,
+    "name": "exp4_vgg.json",
+    "input_size": 256,
+    "fp16": true,
+    "params": "94.05 M",
+    "macs": "18.3 GMac"
+}

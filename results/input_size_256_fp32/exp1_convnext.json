@@ -1,0 +1,19 @@
+{
+    "block_type": "convnext",
+    "channels": [
+        64,
+        128,
+        256,
+        512,
+        1024
+    ],
+    "num_blocks": 8,
+    "norm_type": "bn",
+    "act_type": "relu",
+    "num_classes": 10,
+    "name": "exp1_convnext.json",
+    "input_size": 256,
+    "fp16": false,
+    "params": "83.7 M",
+    "macs": "16.61 GMac"
+}

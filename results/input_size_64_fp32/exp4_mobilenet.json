@@ -1,0 +1,19 @@
+{
+    "block_type": "mobilenet",
+    "channels": [
+        64,
+        128,
+        256,
+        512,
+        1024
+    ],
+    "num_blocks": 8,
+    "norm_type": "ln",
+    "act_type": "gelu",
+    "num_classes": 10,
+    "name": "exp4_mobilenet.json",
+    "input_size": 64,
+    "fp16": false,
+    "params": "10.62 M",
+    "macs": "141.12 MMac"
+}

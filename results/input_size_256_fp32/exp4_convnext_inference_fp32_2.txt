@@ -1,0 +1,3 @@
+Model Path: C:\Users\IntekPlus\Desktop\vscode\PyTorch-to-TensorRT-Block-Comparison\onnx_256_fp32\exp4_convnext.trt
+Total Inference Time: 4846.09 ms
+Average Inference Time: 4.84609 ms

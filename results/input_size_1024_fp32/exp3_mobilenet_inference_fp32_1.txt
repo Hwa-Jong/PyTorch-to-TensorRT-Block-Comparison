@@ -1,0 +1,3 @@
+Model Path: C:\Users\IntekPlus\Desktop\vscode\PyTorch-to-TensorRT-Block-Comparison\onnx_1024_fp32\exp3_mobilenet.trt
+Total Inference Time: 11616.8 ms
+Average Inference Time: 11.6168 ms

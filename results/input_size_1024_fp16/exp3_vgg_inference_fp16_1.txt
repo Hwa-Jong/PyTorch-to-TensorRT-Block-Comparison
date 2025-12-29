@@ -1,0 +1,3 @@
+Model Path: C:\Users\IntekPlus\Desktop\vscode\PyTorch-to-TensorRT-Block-Comparison\onnx_1024_fp16\exp3_vgg.onnx
+Total Inference Time: 11008.5 ms
+Average Inference Time: 11.0085 ms
