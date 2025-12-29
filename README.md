@@ -4,10 +4,14 @@
 This repository contains the implementation and results based on the research paper **"Comparative Analysis of TensorRT Inference Speeds Across Various Neural Network Block Architectures"** by Hwa-Jong Park. The paper systematically analyzes the inference speeds of neural network blocks across various combinations of normalization layers, activation functions, and input resolutions.
 
 ## Environment
+All experiments were conducted on a system equipped with an NVIDIA GeForce RTX 3090 Ti GPU, running on Windows 11. The software environment included CUDA 11.8, cuDNN 8.9.7, Python 3.11, PyTorch 2.5.1, and TensorRT 8.5.3.1. Models were implemented in PyTorch, exported to ONNX format, and optimized using TensorRT for inference in a C++ environment.
+
+- **GPU**: NVIDIA GeForce RTX 3090 Ti
 - **OS**: Windows 11
 - **CUDA**: 11.8
-- **Python**: 3.12
-- **PyTorch**: 2.6.0
+- **cuDNN**: 8.9.7
+- **Python**: 3.11
+- **PyTorch**: 2.5.1
 - **TensorRT**: 8.5.3.1
 - **Visual Studio**: 2022
 
@@ -17,7 +21,7 @@ This repository contains the implementation and results based on the research pa
 
 1. Install PyTorch:
    - Visit [https://pytorch.org/](https://pytorch.org/)
-   - Select your environment (Windows, CUDA 11.8, Python 3.12)
+   - Select your environment (Windows, CUDA 11.8, Python 3.11)
    - Follow the installation instructions provided
 
 2. Install dependencies:
