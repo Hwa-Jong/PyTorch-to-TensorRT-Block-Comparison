@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from ptflops import get_model_complexity_info
-from models.classification import BaseModle
+from .models.classification import BaseModle
 
 
 def export_to_onnx(opt, input_size=256, fp16=True):
@@ -67,16 +67,3 @@ def load_opt_from_json(json_path):
     with open(json_path, "r") as f:
         opt_dict = json.load(f)
     return argparse.Namespace(**opt_dict)
-
-
-if __name__ == "__main__":
-    path = os.path.join("python", "opts")
-    names = os.listdir(path)
-
-    input_size = 1024
-    fp16_mode = False
-
-    for name in names:
-        opt = load_opt_from_json(os.path.join(path, name))
-        opt.name = name
-        export_to_onnx(opt, input_size=input_size, fp16=fp16_mode)

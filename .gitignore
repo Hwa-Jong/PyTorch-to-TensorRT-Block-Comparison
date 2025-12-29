@@ -209,7 +209,7 @@ cython_debug/
 *.idb
 *.pdb
 *.obj
-*.pch
+*.pchㅉ
 *.exe
 *.ilk
 *.aps
@@ -217,3 +217,16 @@ cython_debug/
 *.sdf
 *.opendb
 *.tlog/
+
+# Visual Studio build outputs
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.recipe
+*.FileListAbsolute.txt
+*.iobj
+*.ipdb
+*.lastbuildstate
